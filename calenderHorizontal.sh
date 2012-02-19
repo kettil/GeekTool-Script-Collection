@@ -3,7 +3,9 @@
 # Gibt für den horizontalen Kalender die Tage des aktuellen
 # Monat ohne den aktuellen Tag zurück
 #
-# (c) by www.kettil.de
+# Author:  Kjell Dießel
+# Website: http://www.kettil.de
+# License: CC BY-SA 3.0 ( http://creativecommons.org/licenses/by-sa/3.0/de/ )
 # ---------
 #
 # Read Data
