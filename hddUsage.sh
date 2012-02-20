@@ -27,9 +27,8 @@ function str_pad()
 }
 #
 # Create Table
-proto_table=$(
-    #
-    # Legende
+hdd_table=$(
+    # table legende
     /bin/echo -n "|Volume"
     if [ "${show_size}" = 1 ]; then
         /bin/echo -n "|Size"
@@ -56,25 +55,20 @@ proto_table=$(
     # HDD
     /bin/ls /Volumes/ | /usr/bin/grep -v "WD SmartWare" | /usr/bin/grep -v "MobileBackups" | while read HDD; do
         status=$(df -H /Volumes/"${HDD}")
-        #
         # Name
         /bin/echo -n "|${HDD}"
-        #
         # Size
         if [ "${show_size}" = 1 ]; then
             /bin/echo -n "|$(str_pad "Size" $(/bin/echo ${status} | /usr/bin/awk '{print $9}'))"
         fi
-        #
         # Used
         if [ "${show_used}" = 1 ]; then
         /bin/echo -n "|$(str_pad "Used" $(/bin/echo ${status} | /usr/bin/awk '{print $10}'))"
         fi
-        #
         # Avail
         if [ "${show_free}" = 1 ]; then
         /bin/echo -n "|$(str_pad "Free" $(/bin/echo ${status} | /usr/bin/awk '{print $11}'))"
         fi
-        #
         # Capacity
         if [ "${show_capa}" = 1 ]; then
         /bin/echo -n "|$(str_pad "Capacity" $(/bin/echo ${status} | /usr/bin/awk '{print $12}'))"
@@ -82,5 +76,9 @@ proto_table=$(
         /bin/echo ""
     done
 )
-/bin/echo "${proto_table}" | /usr/bin/sed 's/BOOTCAMP/Windows 7/g' | /usr/bin/sed 's/_/ /g' | /usr/bin/sed 's/ |/|/g' | /usr/bin/column -c $(/bin/expr 1 + ${show_size} + ${show_free} + ${show_free} + ${show_capa}) -s "|" -t
-
+# clear table
+hdd_table=$(/bin/echo "${hdd_table}" | /usr/bin/sed 's/BOOTCAMP/Windows 7/g' | /usr/bin/sed 's/_/ /g' | /usr/bin/sed 's/ |/|/g')
+# count cmv olumn
+hdd_column=$(/bin/expr 1 + ${show_size} + ${show_free} + ${show_free} + ${show_capa})
+# Output
+/bin/echo "${hdd_table}" | /usr/bin/column -c ${hdd_column} -s "|" -t
