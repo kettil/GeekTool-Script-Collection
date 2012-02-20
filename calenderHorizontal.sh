@@ -5,7 +5,7 @@
 #
 # Author:  Kjell Dießel
 # Website: http://www.kettil.de
-# License: CC BY-SA 3.0 ( http://creativecommons.org/licenses/by-sa/3.0/de/ )
+# License: CC-BY-SA 3.0 ( http://creativecommons.org/licenses/by-sa/3.0/de/ )
 # ---------
 #
 # Read Data
@@ -14,13 +14,11 @@ month=$(/bin/date +%m)
 year=$(/bin/date +%Y)
 #
 # transformation: "02" => "2"
-#
 if [ "${today}" -lt 10 ]; then
     today=${today:1:1}
 fi
 #
 # Days of month
-#
 if [ "${month}" = "02" ]; then
     if [ $(/bin/expr ${year} % 400) = 0 ] || ( [ $(/bin/expr ${year} % 4) = 0 ] && [ $(/bin/expr ${year} % 100) != 0 ] ); then
         monthDays=29
@@ -34,7 +32,6 @@ else
 fi
 #
 # Weekday
-#
 for (( i=1; i<=${monthDays}; i++ )); do
     if [ "${i}" -eq "${today}" ]; then
         /bin/echo -n "    "
@@ -50,7 +47,6 @@ done
 /bin/echo ""
 #
 # Day
-#
 for (( i=1; i<=${monthDays}; i++ )); do
     if [ "${i}" -eq "${today}" ]; then
         /bin/echo -n "    "
