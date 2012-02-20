@@ -25,23 +25,23 @@ network_extern=""
 network_table=$(
     # local IP address from computer
     for (( i=0; i<${#network_interface[@]}; i++ )); do
-        echo -n "|${network_name[i]}:"
-        ip=$(/sbin/ifconfig "${network_interface[i]}" | /usr/bin/grep "inet " | /usr/bin/grep -v 127.0.0.1 | awk '{print $2}')
+        /bin/echo -n "|${network_name[i]}:"
+        ip=$(/sbin/ifconfig "${network_interface[i]}" | /usr/bin/grep "inet " | /usr/bin/grep -v 127.0.0.1 | /usr/bin/awk '{print $2}')
         if [ "${ip}" != "" ]; then
-            echo -n "|${ip}"
+            /bin/echo -n "|${ip}"
         else
-            echo -n "|OFFLINE"
+            /bin/echo -n "|OFFLINE"
         fi
-        echo ""
+        /bin/echo ""
     done
     # external IP address
     if [ "${network_extern}" != "" ]; then
         ip=$(/usr/bin/curl --silent "${network_extern}" | /usr/bin/grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}")
-        echo -n "|External:"
+        /bin/echo -n "|External:"
         if [ "${ip}" != "" ]; then
-            echo -n "|${ip}"
+            /bin/echo -n "|${ip}"
         else
-            echo -n "|OFFLINE"
+            /bin/echo -n "|OFFLINE"
         fi
     fi
 )
