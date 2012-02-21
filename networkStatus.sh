@@ -7,19 +7,24 @@
 # License: CC-BY-SA 3.0 ( http://creativecommons.org/licenses/by-sa/3.0/de/ )
 # ---------
 #
+# command example:
+# ./networkStatus "http://www.example.com/ip.php"
+#
+# Website, where only the external IP address will be given back
+#
+# Example of a PHP file: <?php echo $_SERVER['REMOTE_ADDR'];
+# ---------
+#
 # list of Interface
 network_interface=("en0" "en1")
 #
 # list of Name from Interface
 network_name=("Ethernet" "Wireless")
 #
-# Website, where only the external IP address will be given back
-#
-# Example of a PHP file: <?php echo $_SERVER['REMOTE_ADDR'];
-#
-network_extern=""
-#
 # ### No Change ###
+#
+# Variable
+network_extern="${1}"
 #
 # Create Table
 network_table=$(

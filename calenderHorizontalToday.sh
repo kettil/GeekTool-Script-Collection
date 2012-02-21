@@ -7,6 +7,8 @@
 # License: CC-BY-SA 3.0 ( http://creativecommons.org/licenses/by-sa/3.0/de/ )
 # ---------
 #
+# ### No Change ###
+#
 # Read Data
 today=$(/bin/date +%e)
 month=$(/bin/date +%m)

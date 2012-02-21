@@ -10,6 +10,9 @@
 # command example:
 # ./networkTraffic "en0" "Ethernet"
 # ./networkTraffic "en1" "Wireless"
+# ---------
+#
+# ### No Change ###
 #
 # Variable
 network_interface="${1}"

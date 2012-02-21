@@ -80,7 +80,7 @@ hdd_table=$(
 )
 # clear table
 hdd_table=$(/bin/echo "${hdd_table}" | /usr/bin/sed 's/BOOTCAMP/Windows 7/g' | /usr/bin/sed 's/_/ /g' | /usr/bin/sed 's/ |/|/g')
-# count cmv olumn
+# count column
 hdd_column=$(/bin/expr 1 + ${show_size} + ${show_free} + ${show_free} + ${show_capa})
 # Output
 /bin/echo "${hdd_table}" | /usr/bin/column -c ${hdd_column} -s "|" -t
