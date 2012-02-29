@@ -33,7 +33,7 @@ else
 fi
 #
 # Weekday
-for (( i=1; i<${monthDays}; i++ )); do
+for (( i=1; i<=${monthDays}; i++ )); do
     if [ "${i}" -ne "${today}" ]; then
         /bin/echo -n "    "
     else
@@ -48,7 +48,7 @@ done
 /bin/echo ""
 #
 # Day
-for (( i=1; i<${monthDays}; i++ )); do
+for (( i=1; i<=${monthDays}; i++ )); do
     if [ "${i}" -ne "${today}" ]; then
         /bin/echo -n "    "
     else
