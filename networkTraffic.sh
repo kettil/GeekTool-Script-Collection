@@ -46,11 +46,11 @@ function convertBytes()
 network_input=$(getBytesInput "${network_interface}")
 network_output=$(getBytesOutput "${network_interface}")
 #wait one second
-sleep 1
+/bin/sleep 1
 # get the number of bytes in and out one second later and find
 # the difference between bytes in and out during that one second
-network_input=$(expr $(getBytesInput "${network_interface}") - ${network_input})
-network_output=$(expr $(getBytesOutput "${network_interface}") - ${network_output})
+network_input=$(/bin/expr $(getBytesInput "${network_interface}") - ${network_input})
+network_output=$(/bin/expr $(getBytesOutput "${network_interface}") - ${network_output})
 
 # convert bytes to kilobytes
 network_input=$(convertBytes "${network_input}")

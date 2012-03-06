@@ -56,7 +56,7 @@ hdd_table=$(
     #
     # HDD
     /bin/ls /Volumes/ | /usr/bin/grep -v "WD SmartWare" | /usr/bin/grep -v "MobileBackups" | while read HDD; do
-        status=$(df -H /Volumes/"${HDD}")
+        status=$(/bin/df -H /Volumes/"${HDD}")
         # Name
         /bin/echo -n "|${HDD}"
         # Size
@@ -65,15 +65,15 @@ hdd_table=$(
         fi
         # Used
         if [ "${show_used}" = 1 ]; then
-        /bin/echo -n "|$(str_pad "Used" $(/bin/echo ${status} | /usr/bin/awk '{print $10}'))"
+            /bin/echo -n "|$(str_pad "Used" $(/bin/echo ${status} | /usr/bin/awk '{print $10}'))"
         fi
         # Avail
         if [ "${show_free}" = 1 ]; then
-        /bin/echo -n "|$(str_pad "Free" $(/bin/echo ${status} | /usr/bin/awk '{print $11}'))"
+            /bin/echo -n "|$(str_pad "Free" $(/bin/echo ${status} | /usr/bin/awk '{print $11}'))"
         fi
         # Capacity
         if [ "${show_capa}" = 1 ]; then
-        /bin/echo -n "|$(str_pad "Capacity" $(/bin/echo ${status} | /usr/bin/awk '{print $12}'))"
+            /bin/echo -n "|$(str_pad "Capacity" $(/bin/echo ${status} | /usr/bin/awk '{print $12}'))"
         fi
         /bin/echo ""
     done
